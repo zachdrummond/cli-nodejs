@@ -14,3 +14,6 @@ A project used to to track and manage your tasks.
 
 ## Tools
 - Node.js
+
+## Credits
+https://roadmap.sh/projects/task-tracker
