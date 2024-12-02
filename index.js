@@ -1,11 +1,6 @@
-import readline from 'node:readline';
+import process from "node:process";
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-
-rl.question(`What's your name?`, name => {
-  console.log(`Hi ${name}!`);
-  rl.close();
-});
+if(process.argv.length > 2){
+    const commands = process.argv.slice(2);
+    console.log(commands);
+}
