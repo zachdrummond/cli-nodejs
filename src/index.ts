@@ -1,13 +1,13 @@
 import * as fs from 'node:fs/promises';
 import * as process from "node:process";
 
-// type todo = {
-//     id: number,
-//     description: string,
-//     status: "todo"| "in-progress"| "done",
-//     createdAt: Date,
-//     updatedAt: Date
-// };
+type todo = {
+    id: number,
+    description: string,
+    status: "todo"| "in-progress"| "done",
+    createdAt: Date,
+    updatedAt: Date
+};
 
 if(process.argv.length > 2){
     const commands = process.argv.slice(2);
@@ -15,7 +15,7 @@ if(process.argv.length > 2){
 
     switch(command){
         case 'add':
-            const description = commands[1];
+            const description: string = commands[1];
             update_todo_list(description);
             break;
         case 'update':
@@ -32,9 +32,9 @@ if(process.argv.length > 2){
     }
 }
 
-async function update_todo_list(description){
+async function update_todo_list(description: string){
 
-    const todo = {
+    const todo: todo = {
         id: 1,
         description: description,
         status: "todo",
