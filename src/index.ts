@@ -1,5 +1,6 @@
 import * as fs from 'node:fs/promises';
 import * as process from "node:process";
+import path from "path";
 
 type todo = {
     id: number,
@@ -8,6 +9,9 @@ type todo = {
     createdAt: Date,
     updatedAt: Date
 };
+
+const file_path:string = path.join(__dirname, 'todo-list.json');
+const todo_list:todo[] = [];
 
 if(process.argv.length > 2){
     const commands = process.argv.slice(2);
@@ -42,10 +46,21 @@ async function update_todo_list(description: string){
         updatedAt: new Date()
     }
 
+    todo_list.push(todo);
+
     try {
-        await fs.writeFile('todo-list.json', JSON.stringify(todo));
+        await fs.writeFile(file_path, JSON.stringify(todo_list, null, 2), {flag: 'a+'});
         console.log(todo);
     } catch (err) {
         console.log(err);
     }
+}
+
+async function get_todo_list() {
+  try {
+    const data = await fs.readFile(file_path, { encoding: 'utf8' });
+    console.log(JSON.parse(data), typeof JSON.parse(data));
+  } catch (err) {
+    console.log(err);
+  }
 }

@@ -35,13 +35,6 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = __importStar(require("node:fs/promises"));
 const process = __importStar(require("node:process"));
-// type todo = {
-//     id: number,
-//     description: string,
-//     status: "todo"| "in-progress"| "done",
-//     createdAt: Date,
-//     updatedAt: Date
-// };
 if (process.argv.length > 2) {
     const commands = process.argv.slice(2);
     const command = commands[0];
@@ -71,9 +64,19 @@ async function update_todo_list(description) {
         createdAt: new Date(),
         updatedAt: new Date()
     };
+    get_current_id();
     try {
         await fs.writeFile('todo-list.json', JSON.stringify(todo));
         console.log(todo);
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+async function get_current_id() {
+    try {
+        const data = await fs.readFile('to-do-list.json', { encoding: 'utf8' });
+        console.log(data);
     }
     catch (err) {
         console.log(err);
