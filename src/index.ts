@@ -1,6 +1,7 @@
 import * as fs from "node:fs/promises";
 import * as process from "node:process";
 import path from "path";
+import { get_todo_list } from "./functions";
 
 const file_path: string = path.join(__dirname, "todo-list.json");
 let todo_list: Todo[] = [];
@@ -9,7 +10,7 @@ if (process.argv.length > 2) {
   const commands = process.argv.slice(2);
   const command = commands[0];
   (async function () {
-    todo_list = await get_todo_list();
+    todo_list = await get_todo_list(file_path);
 
     switch (command) {
       case "add":
@@ -30,15 +31,6 @@ if (process.argv.length > 2) {
         console.log("default");
     }
   })();
-}
-
-async function get_todo_list(): Promise<any> {
-  try {
-    const data = await fs.readFile(file_path, "utf-8");
-    return data ? (JSON.parse(data) as Todo[]) : [];
-  } catch (err: any) {
-    throw err;
-  }
 }
 
 async function update_todo_list(description: string) {

@@ -39,26 +39,33 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const fs = __importStar(require("node:fs/promises"));
 const process = __importStar(require("node:process"));
 const path_1 = __importDefault(require("path"));
+const functions_1 = require("./functions");
 const file_path = path_1.default.join(__dirname, "todo-list.json");
 let todo_list = [];
 if (process.argv.length > 2) {
     const commands = process.argv.slice(2);
     const command = commands[0];
-    "add";
-    const description = commands[1];
-    update_todo_list(description);
-    break;
-    "update";
-    console.log("update");
-    break;
-    "delete";
-    console.log("delete");
-    break;
-    "list";
-    console.log("list");
-    break;
-    console.log("default");
-    //   }
+    (async function () {
+        todo_list = await (0, functions_1.get_todo_list)(file_path);
+        switch (command) {
+            case "add":
+                const description = commands[1];
+                // update_todo_list(description);
+                console.log(todo_list);
+                break;
+            case "update":
+                console.log("update");
+                break;
+            case "delete":
+                console.log("delete");
+                break;
+            case "list":
+                console.log("list");
+                break;
+            default:
+                console.log("default");
+        }
+    })();
 }
 async function update_todo_list(description) {
     const todo = {
@@ -79,13 +86,3 @@ async function update_todo_list(description) {
         console.log(err);
     }
 }
-async function get_todo_list() {
-    try {
-        const data = await fs.readFile(file_path, "utf-8");
-        console.log(data);
-    }
-    catch (err) {
-        console.log(err);
-    }
-}
-get_todo_list();
