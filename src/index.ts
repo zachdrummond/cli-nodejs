@@ -2,14 +2,6 @@ import * as fs from "node:fs/promises";
 import * as process from "node:process";
 import path from "path";
 
-interface Todo {
-  id: number;
-  description: string;
-  status: "todo" | "in-progress" | "done";
-  createdAt: Date;
-  updatedAt: Date;
-}
-
 const file_path: string = path.join(__dirname, "todo-list.json");
 let todo_list: Todo[] = [];
 
@@ -44,8 +36,8 @@ async function get_todo_list(): Promise<any> {
   try {
     const data = await fs.readFile(file_path, "utf-8");
     return data ? (JSON.parse(data) as Todo[]) : [];
-  } catch (err) {
-    throw new Error(`Node-CLI To Do App: get_todo_list()\n` + err);
+  } catch (err: any) {
+    throw err;
   }
 }
 
