@@ -32,29 +32,33 @@ var __importStar = (this && this.__importStar) || (function () {
         return result;
     };
 })();
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = __importStar(require("node:fs/promises"));
 const process = __importStar(require("node:process"));
+const path_1 = __importDefault(require("path"));
+const file_path = path_1.default.join(__dirname, "todo-list.json");
+let todo_list = [];
 if (process.argv.length > 2) {
     const commands = process.argv.slice(2);
     const command = commands[0];
-    switch (command) {
-        case 'add':
-            const description = commands[1];
-            update_todo_list(description);
-            break;
-        case 'update':
-            console.log('update');
-            break;
-        case 'delete':
-            console.log('delete');
-            break;
-        case 'list':
-            console.log('list');
-            break;
-        default:
-            console.log('default');
-    }
+    "add";
+    const description = commands[1];
+    update_todo_list(description);
+    break;
+    "update";
+    console.log("update");
+    break;
+    "delete";
+    console.log("delete");
+    break;
+    "list";
+    console.log("list");
+    break;
+    console.log("default");
+    //   }
 }
 async function update_todo_list(description) {
     const todo = {
@@ -62,23 +66,26 @@ async function update_todo_list(description) {
         description: description,
         status: "todo",
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
     };
-    get_current_id();
+    todo_list.push(todo);
     try {
-        await fs.writeFile('todo-list.json', JSON.stringify(todo));
+        await fs.writeFile(file_path, JSON.stringify(todo_list, null, 2), {
+            flag: "a+",
+        });
         console.log(todo);
     }
     catch (err) {
         console.log(err);
     }
 }
-async function get_current_id() {
+async function get_todo_list() {
     try {
-        const data = await fs.readFile('to-do-list.json', { encoding: 'utf8' });
+        const data = await fs.readFile(file_path, "utf-8");
         console.log(data);
     }
     catch (err) {
         console.log(err);
     }
 }
+get_todo_list();
