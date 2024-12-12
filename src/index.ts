@@ -17,8 +17,7 @@ if (process.argv.length > 2) {
     switch (command) {
       case "add":
         const description: string = commands[1];
-        // update_todo_list(description);
-        console.log(todo_list);
+        update_todo_list(description);
         break;
       case "update":
         console.log("update");
@@ -44,13 +43,12 @@ async function update_todo_list(description: string) {
     updatedAt: new Date(),
   };
 
+  console.log("BEFORE", todo_list);
   todo_list.push(todo);
 
   try {
-    await fs.writeFile(file_path, JSON.stringify(todo_list, null, 2), {
-      flag: "a+",
-    });
-    console.log(todo);
+    await fs.writeFile(file_path, JSON.stringify(todo_list, null, 2));
+    console.log("AFTER", todo_list);
   } catch (err) {
     console.log(err);
   }
