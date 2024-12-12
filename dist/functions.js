@@ -41,6 +41,8 @@ async function get_todo_list(file_path) {
         return data ? JSON.parse(data) : [];
     }
     catch (err) {
+        if (err.errno === -4058 && err.code === "ENOENT")
+            return [];
         throw err;
     }
 }
