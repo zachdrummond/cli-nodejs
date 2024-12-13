@@ -33,25 +33,19 @@ var __importStar = (this && this.__importStar) || (function () {
         return result;
     };
 })();
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const fs = __importStar(require("node:fs/promises"));
 const process = __importStar(require("node:process"));
-const path_1 = __importDefault(require("path"));
 const functions_1 = require("./functions");
-const file_path = path_1.default.join(__dirname, "todo-list.json");
 let todo_list = [];
 if (process.argv.length > 2) {
     const commands = process.argv.slice(2);
     const command = commands[0];
     (async function () {
-        todo_list = await (0, functions_1.get_todo_list)(file_path);
+        todo_list = await (0, functions_1.get_todo_list)();
         switch (command) {
             case "add":
                 const description = commands[1];
-                update_todo_list(description);
+                (0, functions_1.add_todo_list)(todo_list, description);
                 break;
             case "update":
                 console.log("update");
@@ -66,33 +60,4 @@ if (process.argv.length > 2) {
                 console.log("default");
         }
     })();
-}
-async function update_todo_list(description) {
-    console.log(todo_list[todo_list.length - 1].id);
-    let todo_id = 0;
-    console.log("LENGTH", todo_list.length);
-    if (todo_list.length === 0) {
-        // todo_list.push(todo);
-        todo_id = 1;
-    }
-    else {
-        // console.log(todo_list[i]);
-        todo_id = todo_list[todo_list.length - 1].id++;
-    }
-    const todo = {
-        id: todo_id,
-        description: description,
-        status: "todo",
-        createdAt: new Date(),
-        updatedAt: new Date(),
-    };
-    // console.log("BEFORE", todo_list);
-    todo_list.push(todo);
-    try {
-        await fs.writeFile(file_path, JSON.stringify(todo_list, null, 2));
-        // console.log("AFTER", todo_list);
-    }
-    catch (err) {
-        console.log(err);
-    }
 }

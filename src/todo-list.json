@@ -40,5 +40,19 @@
     "status": "todo",
     "createdAt": "2024-12-13T17:40:08.223Z",
     "updatedAt": "2024-12-13T17:40:08.223Z"
+  },
+  {
+    "id": 7,
+    "description": "groceries",
+    "status": "todo",
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": 8,
+    "description": "groceries",
+    "status": "todo",
+    "createdAt": "12-13-2024",
+    "updatedAt": "12-13-2024"
   }
 ]
