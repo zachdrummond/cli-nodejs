@@ -51,8 +51,7 @@ if (process.argv.length > 2) {
         switch (command) {
             case "add":
                 const description = commands[1];
-                // update_todo_list(description);
-                console.log(todo_list);
+                update_todo_list(description);
                 break;
             case "update":
                 console.log("update");
@@ -69,19 +68,29 @@ if (process.argv.length > 2) {
     })();
 }
 async function update_todo_list(description) {
+    console.log(todo_list[todo_list.length - 1].id);
+    let todo_id = 0;
+    console.log("LENGTH", todo_list.length);
+    if (todo_list.length === 0) {
+        // todo_list.push(todo);
+        todo_id = 1;
+    }
+    else {
+        // console.log(todo_list[i]);
+        todo_id = todo_list[todo_list.length - 1].id++;
+    }
     const todo = {
-        id: 1,
+        id: todo_id,
         description: description,
         status: "todo",
         createdAt: new Date(),
         updatedAt: new Date(),
     };
+    // console.log("BEFORE", todo_list);
     todo_list.push(todo);
     try {
-        await fs.writeFile(file_path, JSON.stringify(todo_list, null, 2), {
-            flag: "a+",
-        });
-        console.log(todo);
+        await fs.writeFile(file_path, JSON.stringify(todo_list, null, 2));
+        // console.log("AFTER", todo_list);
     }
     catch (err) {
         console.log(err);

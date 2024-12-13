@@ -35,20 +35,27 @@ if (process.argv.length > 2) {
 }
 
 async function update_todo_list(description: string) {
+  let todo_id: number = 0;
+
+  if (todo_list.length === 0) {
+    todo_id = 1;
+  } else {
+    todo_id = todo_list[todo_list.length - 1].id;
+    todo_id++;
+  }
+
   const todo: Todo = {
-    id: 1,
+    id: todo_id,
     description: description,
     status: "todo",
     createdAt: new Date(),
     updatedAt: new Date(),
   };
 
-  console.log("BEFORE", todo_list);
   todo_list.push(todo);
 
   try {
     await fs.writeFile(file_path, JSON.stringify(todo_list, null, 2));
-    console.log("AFTER", todo_list);
   } catch (err) {
     console.log(err);
   }
