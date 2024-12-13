@@ -8,7 +8,7 @@ const get_current_date = (): string => {
   const month = now.getMonth() + 1;
   const day = now.getDate();
   const year = now.getFullYear();
-  return `${month}-${day}-${year}`;
+  return `${month}/${day}/${year}`;
 };
 
 export async function get_todo_list(): Promise<Todo[]> {
@@ -49,6 +49,13 @@ export async function add_todo(todo_list: Todo[], description: string) {
   }
 }
 
-export async function delete_todo(todo_list: Todo[], description: string) {
-  
+export async function delete_todo(todo_list: Todo[], id: string) {
+  for(let i = 0; i < todo_list.length; i++){
+    if(id === todo_list[i].id){
+      // todo_list.splice
+    }
+  }
+   // Check if id exists
+  // Delete
+  // Write to file
 }
