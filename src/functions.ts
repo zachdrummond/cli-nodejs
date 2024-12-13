@@ -22,7 +22,7 @@ export async function get_todo_list(): Promise<Todo[]> {
   }
 }
 
-export async function add_todo_list(todo_list: Todo[], description: string) {
+export async function add_todo(todo_list: Todo[], description: string) {
   let todo_id: number = 0;
 
   if (todo_list.length === 0) {
@@ -47,4 +47,8 @@ export async function add_todo_list(todo_list: Todo[], description: string) {
   } catch (err) {
     throw err;
   }
+}
+
+export async function delete_todo(todo_list: Todo[], description: string) {
+  
 }
