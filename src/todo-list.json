@@ -131,12 +131,5 @@
     "status": "todo",
     "createdAt": "12/13/2024",
     "updatedAt": "12/13/2024"
-  },
-  {
-    "id": 20,
-    "description": "groceries",
-    "status": "todo",
-    "createdAt": "12/13/2024",
-    "updatedAt": "12/13/2024"
   }
 ]

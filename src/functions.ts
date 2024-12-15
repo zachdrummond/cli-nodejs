@@ -50,12 +50,14 @@ export async function add_todo(todo_list: Todo[], description: string) {
 }
 
 export async function delete_todo(todo_list: Todo[], id: string) {
-  for(let i = 0; i < todo_list.length; i++){
-    if(id === todo_list[i].id){
-      // todo_list.splice
+  for (let i = 0; i < todo_list.length; i++) {
+    if (id === todo_list[i].id.toString()) {
+      todo_list.splice(i, 1);
     }
   }
-   // Check if id exists
-  // Delete
-  // Write to file
+  try {
+    await fs.writeFile(file_path, JSON.stringify(todo_list, null, 2));
+  } catch (err) {
+    throw err;
+  }
 }
