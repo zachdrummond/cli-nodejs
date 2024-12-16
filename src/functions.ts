@@ -82,10 +82,24 @@ export async function mark_todo(
   id: string,
   status: Todo["status"]
 ) {
+  console.log("MARK TODO");
   for (let i = 0; i < todo_list.length; i++) {
     if (id === todo_list[i].id.toString()) {
       todo_list[i].status = status;
+      console.log(todo_list[i].status, id, status);
     }
   }
   write_to_File(todo_list);
 }
+
+// function isValidStatus(status: string): status is Status {
+//     return ["todo", "in-progress", "done"].includes(status);
+// }
+
+// let statusString: string = "todo"; // Could be dynamic
+// if (isValidStatus(statusString)) {
+//     let taskStatus: Status = statusString;
+// } else {
+//     // Handle the invalid status case
+//     console.error("Invalid status value");
+// }

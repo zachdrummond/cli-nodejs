@@ -2,14 +2,14 @@
   {
     "id": 2,
     "description": "finance",
-    "status": "todo",
+    "status": "done",
     "createdAt": "12/16/2024 9:57",
     "updatedAt": "12/16/2024 9:57"
   },
   {
     "id": 3,
     "description": "buy cherries",
-    "status": "todo",
+    "status": "in-progress",
     "createdAt": "12/16/2024 9:59",
     "updatedAt": "12/16/2024 9:59"
   }

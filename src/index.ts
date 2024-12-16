@@ -1,7 +1,13 @@
 /// <reference path="C:\Users\zachd\Documents\Coding\cli-nodejs\types\todo.d.ts" />
 
 import * as process from "node:process";
-import { add_todo, delete_todo, get_todo_list, update_todo, mark_todo } from "./functions";
+import {
+  add_todo,
+  delete_todo,
+  get_todo_list,
+  update_todo,
+  mark_todo,
+} from "./functions";
 
 let todo_list: Todo[] = [];
 
@@ -29,8 +35,10 @@ if (process.argv.length > 2) {
       case "list":
         break;
       case "mark":
+        const status: Todo["status"] = commands[2] as Todo["status"];
+        mark_todo(todo_list, id, status);
         break;
-        default:
+      default:
         console.log("default");
     }
   })();
