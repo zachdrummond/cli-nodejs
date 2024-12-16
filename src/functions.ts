@@ -61,3 +61,20 @@ export async function delete_todo(todo_list: Todo[], id: string) {
     throw err;
   }
 }
+
+export async function update_todo(
+  todo_list: Todo[],
+  id: string,
+  description: string
+) {
+  for (let i = 0; i < todo_list.length; i++) {
+    if (id === todo_list[i].id.toString()) {
+      todo_list[i].description = description;
+    }
+  }
+  try {
+    await fs.writeFile(file_path, JSON.stringify(todo_list, null, 2));
+  } catch (err) {
+    throw err;
+  }
+}
