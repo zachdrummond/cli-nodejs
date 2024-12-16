@@ -8,8 +8,18 @@ const get_current_date = (): string => {
   const month = now.getMonth() + 1;
   const day = now.getDate();
   const year = now.getFullYear();
-  return `${month}/${day}/${year}`;
+  const hours = now.getHours();
+  const minutes = now.getMinutes();
+  return `${month}/${day}/${year} ${hours}:${minutes}`;
 };
+
+async function write_to_File(todo_list: Todo[]) {
+  try {
+    await fs.writeFile(file_path, JSON.stringify(todo_list, null, 2));
+  } catch (err) {
+    throw err;
+  }
+}
 
 export async function get_todo_list(): Promise<Todo[]> {
   try {
@@ -42,11 +52,7 @@ export async function add_todo(todo_list: Todo[], description: string) {
 
   todo_list.push(todo);
 
-  try {
-    await fs.writeFile(file_path, JSON.stringify(todo_list, null, 2));
-  } catch (err) {
-    throw err;
-  }
+  write_to_File(todo_list);
 }
 
 export async function delete_todo(todo_list: Todo[], id: string) {
@@ -55,11 +61,7 @@ export async function delete_todo(todo_list: Todo[], id: string) {
       todo_list.splice(i, 1);
     }
   }
-  try {
-    await fs.writeFile(file_path, JSON.stringify(todo_list, null, 2));
-  } catch (err) {
-    throw err;
-  }
+  write_to_File(todo_list);
 }
 
 export async function update_todo(
@@ -72,9 +74,18 @@ export async function update_todo(
       todo_list[i].description = description;
     }
   }
-  try {
-    await fs.writeFile(file_path, JSON.stringify(todo_list, null, 2));
-  } catch (err) {
-    throw err;
+  write_to_File(todo_list);
+}
+
+export async function mark_todo(
+  todo_list: Todo[],
+  id: string,
+  status: Todo["status"]
+) {
+  for (let i = 0; i < todo_list.length; i++) {
+    if (id === todo_list[i].id.toString()) {
+      todo_list[i].status = status;
+    }
   }
+  write_to_File(todo_list);
 }

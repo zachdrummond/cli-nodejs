@@ -1,135 +1,16 @@
 [
   {
-    "id": 1,
-    "description": "groceries",
-    "status": "todo",
-    "createdAt": "2024-12-13T17:39:28.475Z",
-    "updatedAt": "2024-12-13T17:39:28.475Z"
-  },
-  {
     "id": 2,
-    "description": "groceries",
+    "description": "finance",
     "status": "todo",
-    "createdAt": "2024-12-13T17:39:32.955Z",
-    "updatedAt": "2024-12-13T17:39:32.955Z"
+    "createdAt": "12/16/2024 9:57",
+    "updatedAt": "12/16/2024 9:57"
   },
   {
     "id": 3,
-    "description": "Buy bananas",
+    "description": "buy cherries",
     "status": "todo",
-    "createdAt": "2024-12-13T17:39:38.679Z",
-    "updatedAt": "2024-12-13T17:39:38.679Z"
-  },
-  {
-    "id": 4,
-    "description": "groceries",
-    "status": "todo",
-    "createdAt": "2024-12-13T17:39:52.366Z",
-    "updatedAt": "2024-12-13T17:39:52.366Z"
-  },
-  {
-    "id": 5,
-    "description": "groceries",
-    "status": "todo",
-    "createdAt": "2024-12-13T17:39:55.098Z",
-    "updatedAt": "2024-12-13T17:39:55.098Z"
-  },
-  {
-    "id": 6,
-    "description": "groceries",
-    "status": "todo",
-    "createdAt": "2024-12-13T17:40:08.223Z",
-    "updatedAt": "2024-12-13T17:40:08.223Z"
-  },
-  {
-    "id": 7,
-    "description": "groceries",
-    "status": "todo",
-    "createdAt": null,
-    "updatedAt": null
-  },
-  {
-    "id": 8,
-    "description": "groceries",
-    "status": "todo",
-    "createdAt": "12-13-2024",
-    "updatedAt": "12-13-2024"
-  },
-  {
-    "id": 9,
-    "description": "groceries",
-    "status": "todo",
-    "createdAt": "12-13-2024",
-    "updatedAt": "12-13-2024"
-  },
-  {
-    "id": 10,
-    "description": "groceries",
-    "status": "todo",
-    "createdAt": "12-13-2024",
-    "updatedAt": "12-13-2024"
-  },
-  {
-    "id": 11,
-    "description": "groceries",
-    "status": "todo",
-    "createdAt": "12-13-2024",
-    "updatedAt": "12-13-2024"
-  },
-  {
-    "id": 12,
-    "description": "groceries",
-    "status": "todo",
-    "createdAt": "12-13-2024",
-    "updatedAt": "12-13-2024"
-  },
-  {
-    "id": 13,
-    "description": "groceries",
-    "status": "todo",
-    "createdAt": "12-13-2024",
-    "updatedAt": "12-13-2024"
-  },
-  {
-    "id": 14,
-    "description": "groceries",
-    "status": "todo",
-    "createdAt": "12-13-2024",
-    "updatedAt": "12-13-2024"
-  },
-  {
-    "id": 15,
-    "description": "groceries",
-    "status": "todo",
-    "createdAt": "12-13-2024",
-    "updatedAt": "12-13-2024"
-  },
-  {
-    "id": 16,
-    "description": "groceries",
-    "status": "todo",
-    "createdAt": "12/13-2024",
-    "updatedAt": "12/13-2024"
-  },
-  {
-    "id": 17,
-    "description": "groceries",
-    "status": "todo",
-    "createdAt": "12/13/2024",
-    "updatedAt": "12/13/2024"
-  },
-  {
-    "id": 18,
-    "description": "groceries",
-    "status": "todo",
-    "createdAt": "12/13/2024",
-    "updatedAt": "12/13/2024"
-  },
-  {
-    "id": 19,
-    "description": "groceries",
-    "status": "todo",
-    "createdAt": "12/13/2024",
-    "updatedAt": "12/13/2024"
+    "createdAt": "12/16/2024 9:59",
+    "updatedAt": "12/16/2024 9:59"
   }
 ]
