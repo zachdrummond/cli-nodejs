@@ -55,16 +55,29 @@ export async function add_todo(todo_list: Todo[], description: string) {
   write_to_File(todo_list);
 }
 
-export async function delete_todo(todo_list: Todo[], id: string) {
+export async function update_todo(
+  func: (todo_list: Todo[], index: number) => void,
+  todo_list: Todo[],
+  id: string
+) {
   for (let i = 0; i < todo_list.length; i++) {
     if (id === todo_list[i].id.toString()) {
-      todo_list.splice(i, 1);
+      console.log(todo_list);
+      console.log(`LENGTH: ${todo_list.length} | ${todo_list[i].id.toString()}`);
+      func(todo_list, i);
+      console.log(todo_list);
     }
   }
   write_to_File(todo_list);
 }
 
-export async function update_todo(
+export const delete_todo = (todo_list: Todo[], index: number) => {
+  console.log("INDEX: " + index);
+
+  todo_list.splice(index, 1);
+};
+
+export async function update_todo2(
   todo_list: Todo[],
   id: string,
   description: string
@@ -82,11 +95,9 @@ export async function mark_todo(
   id: string,
   status: Todo["status"]
 ) {
-  console.log("MARK TODO");
   for (let i = 0; i < todo_list.length; i++) {
     if (id === todo_list[i].id.toString()) {
       todo_list[i].status = status;
-      console.log(todo_list[i].status, id, status);
     }
   }
   write_to_File(todo_list);

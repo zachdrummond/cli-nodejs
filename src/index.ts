@@ -27,10 +27,12 @@ if (process.argv.length > 2) {
         break;
       case "update":
         description = commands[2];
-        update_todo(todo_list, id, description);
+        // update_todo(todo_list, id, description);
         break;
       case "delete":
-        delete_todo(todo_list, id);
+        console.log(`ID: ${id}`);
+        update_todo(delete_todo, todo_list, id);
+        // delete_todo(todo_list, id);
         break;
       case "list":
         break;
