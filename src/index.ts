@@ -4,6 +4,7 @@ import * as process from "node:process";
 import {
   add_todo,
   get_list,
+  list_todos,
   update_list,
 } from "./functions";
 
@@ -30,6 +31,8 @@ if (process.argv.length > 2) {
         update_list(command, todo_list, id, desc_or_status);
         break;
       case "list":
+        desc_or_status = commands[1];
+        list_todos(todo_list, desc_or_status);
         break;
       default:
         console.log("default");

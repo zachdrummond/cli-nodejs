@@ -1,3 +1,4 @@
+import { stat } from "node:fs";
 import * as fs from "node:fs/promises";
 import path from "path";
 
@@ -32,7 +33,7 @@ export async function get_list(): Promise<Todo[]> {
   }
 }
 
-export async function add_todo(todo_list: Todo[], description: string) {
+export const add_todo = (todo_list: Todo[], description: string) => {
   let todo_id: number = 0;
 
   if (todo_list.length === 0) {
@@ -53,14 +54,14 @@ export async function add_todo(todo_list: Todo[], description: string) {
   todo_list.push(todo);
 
   write_to_File(todo_list);
-}
+};
 
-export async function update_list(
+export const update_list = (
   command: string,
   todo_list: Todo[],
   id: string,
   desc_or_status: string
-) {
+) => {
   for (let i = 0; i < todo_list.length; i++) {
     if (id === todo_list[i].id.toString()) {
       switch (command) {
@@ -79,7 +80,20 @@ export async function update_list(
     }
   }
   write_to_File(todo_list);
-}
+};
+
+export const list_todos = (todo_list: Todo[], status: string) => {
+  if (status === "") {
+    console.table(todo_list);
+  } else {
+    const todo_list_by_status = [];
+    for (let i = 0; i < todo_list.length; i++) {
+      if (todo_list[i].status === status)
+        todo_list_by_status.push(todo_list[i]);
+    }
+    console.table(todo_list_by_status);
+  }
+};
 
 // function isValidStatus(status: string): status is Status {
 //     return ["todo", "in-progress", "done"].includes(status);
