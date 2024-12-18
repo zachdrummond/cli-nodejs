@@ -4,8 +4,9 @@ import * as process from "node:process";
 import {
   add_todo,
   delete_todo,
-  get_todo_list,
   update_todo,
+  get_list,
+  update_list,
   mark_todo,
 } from "./functions";
 
@@ -15,30 +16,29 @@ if (process.argv.length > 2) {
   const commands = process.argv.slice(2);
   const command = commands[0];
   let id: string = commands[1];
-  let description: string = "";
+  let desc_or_status: string = "";
 
   (async function () {
-    todo_list = await get_todo_list();
+    todo_list = await get_list();
 
     switch (command) {
       case "add":
-        description = commands[1];
-        add_todo(todo_list, description);
+        desc_or_status = commands[1];
+        add_todo(todo_list, desc_or_status);
         break;
       case "update":
-        description = commands[2];
+        desc_or_status = commands[2];
         // update_todo(todo_list, id, description);
+        update_list(update_todo, todo_list, id, desc_or_status);
         break;
       case "delete":
-        console.log(`ID: ${id}`);
-        update_todo(delete_todo, todo_list, id);
-        // delete_todo(todo_list, id);
+        update_list(delete_todo, todo_list, id, "");
         break;
       case "list":
         break;
       case "mark":
-        const status: Todo["status"] = commands[2] as Todo["status"];
-        mark_todo(todo_list, id, status);
+        desc_or_status = commands[2];
+        update_list(mark_todo, todo_list, id, desc_or_status);
         break;
       default:
         console.log("default");

@@ -1,7 +1,7 @@
 declare interface Todo {
   id: number;
   description: string;
-  status: "todo" | "in-progress" | "done";
+  status: string;
   createdAt: string;
   updatedAt: string;
 }

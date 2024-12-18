@@ -21,7 +21,7 @@ async function write_to_File(todo_list: Todo[]) {
   }
 }
 
-export async function get_todo_list(): Promise<Todo[]> {
+export async function get_list(): Promise<Todo[]> {
   try {
     const data = await fs.readFile(file_path, "utf-8");
     return data ? (JSON.parse(data) as Todo[]) : [];
@@ -55,49 +55,39 @@ export async function add_todo(todo_list: Todo[], description: string) {
   write_to_File(todo_list);
 }
 
-export async function update_todo(
-  func: (todo_list: Todo[], index: number) => void,
+export const mark_todo = (
   todo_list: Todo[],
-  id: string
-) {
-  for (let i = 0; i < todo_list.length; i++) {
-    if (id === todo_list[i].id.toString()) {
-      console.log(todo_list);
-      console.log(`LENGTH: ${todo_list.length} | ${todo_list[i].id.toString()}`);
-      func(todo_list, i);
-      console.log(todo_list);
-    }
-  }
-  write_to_File(todo_list);
-}
+  index: number,
+  status: string
+) => {
+  todo_list[index].status = status;
+};
 
 export const delete_todo = (todo_list: Todo[], index: number) => {
-  console.log("INDEX: " + index);
-
   todo_list.splice(index, 1);
 };
 
-export async function update_todo2(
+export const update_todo = (
   todo_list: Todo[],
-  id: string,
+  index: number,
   description: string
-) {
-  for (let i = 0; i < todo_list.length; i++) {
-    if (id === todo_list[i].id.toString()) {
-      todo_list[i].description = description;
-    }
-  }
-  write_to_File(todo_list);
-}
+) => {
+  todo_list[index].description = description;
+};
 
-export async function mark_todo(
+export async function update_list(
+  func: (
+    todo_list: Todo[],
+    index: number,
+    desc_or_status: string
+  ) => void,
   todo_list: Todo[],
   id: string,
-  status: Todo["status"]
+  desc_or_status: string
 ) {
   for (let i = 0; i < todo_list.length; i++) {
     if (id === todo_list[i].id.toString()) {
-      todo_list[i].status = status;
+      func(todo_list, i, desc_or_status);
     }
   }
   write_to_File(todo_list);
