@@ -3,11 +3,8 @@
 import * as process from "node:process";
 import {
   add_todo,
-  delete_todo,
-  update_todo,
   get_list,
   update_list,
-  mark_todo,
 } from "./functions";
 
 let todo_list: Todo[] = [];
@@ -26,19 +23,13 @@ if (process.argv.length > 2) {
         desc_or_status = commands[1];
         add_todo(todo_list, desc_or_status);
         break;
+      case "delete":
+      case "mark":
       case "update":
         desc_or_status = commands[2];
-        // update_todo(todo_list, id, description);
-        update_list(update_todo, todo_list, id, desc_or_status);
-        break;
-      case "delete":
-        update_list(delete_todo, todo_list, id, "");
+        update_list(command, todo_list, id, desc_or_status);
         break;
       case "list":
-        break;
-      case "mark":
-        desc_or_status = commands[2];
-        update_list(mark_todo, todo_list, id, desc_or_status);
         break;
       default:
         console.log("default");

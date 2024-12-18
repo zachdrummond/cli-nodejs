@@ -55,39 +55,27 @@ export async function add_todo(todo_list: Todo[], description: string) {
   write_to_File(todo_list);
 }
 
-export const mark_todo = (
-  todo_list: Todo[],
-  index: number,
-  status: string
-) => {
-  todo_list[index].status = status;
-};
-
-export const delete_todo = (todo_list: Todo[], index: number) => {
-  todo_list.splice(index, 1);
-};
-
-export const update_todo = (
-  todo_list: Todo[],
-  index: number,
-  description: string
-) => {
-  todo_list[index].description = description;
-};
-
 export async function update_list(
-  func: (
-    todo_list: Todo[],
-    index: number,
-    desc_or_status: string
-  ) => void,
+  command: string,
   todo_list: Todo[],
   id: string,
   desc_or_status: string
 ) {
   for (let i = 0; i < todo_list.length; i++) {
     if (id === todo_list[i].id.toString()) {
-      func(todo_list, i, desc_or_status);
+      switch (command) {
+        case "delete":
+          todo_list.splice(i, 1);
+          break;
+        case "mark":
+          todo_list[i].status = desc_or_status;
+          break;
+        case "update":
+          todo_list[i].description = desc_or_status;
+          break;
+        default:
+          break;
+      }
     }
   }
   write_to_File(todo_list);

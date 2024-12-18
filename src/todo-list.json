@@ -1,7 +1,7 @@
 [
   {
     "id": 3,
-    "description": "buy cherries",
+    "description": "buy peanuts",
     "status": "in-progress",
     "createdAt": "12/16/2024 9:59",
     "updatedAt": "12/16/2024 9:59"
@@ -9,7 +9,7 @@
   {
     "id": 4,
     "description": "groceries",
-    "status": "todo",
+    "status": "done",
     "createdAt": "12/17/2024 14:1",
     "updatedAt": "12/17/2024 14:1"
   },
