@@ -84,24 +84,20 @@ export const update_list = (
   write_to_File(todo_list);
 };
 
-export const list_todos = (todo_list: Todo[], status: string) => {
+export const print_todos = (todo_list: Todo[], status: string) => {
   const table = new Table({
     head: ["Id", "Description", "Status", "Created At", "Updated At"],
   });
 
-  if (status === "" || status === undefined) {
-    console.table(todo_list);
-  } else {
-    for (let i = 0; i < todo_list.length; i++) {
-      if (todo_list[i].status === status)
-        table.push([
-      todo_list[i].id.toString(),
-      todo_list[i].description,
-      todo_list[i].status,
-      todo_list[i].createdAt,
-      todo_list[i].updatedAt,
+  for (let i = 0; i < todo_list.length; i++) {
+    if (!status || todo_list[i].status === status)
+      table.push([
+        todo_list[i].id.toString(),
+        todo_list[i].description,
+        todo_list[i].status,
+        todo_list[i].createdAt,
+        todo_list[i].updatedAt,
       ]);
-    }
   }
   console.log(table.toString());
 };
