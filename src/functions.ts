@@ -52,6 +52,7 @@ export const add_todo = (todo_list: Todo[], description: string) => {
   };
 
   todo_list.push(todo);
+  print_todos([todo]);
 
   write_to_File(todo_list);
 };
@@ -66,15 +67,17 @@ export const update_list = (
     if (id === todo_list[i].id.toString()) {
       switch (command) {
         case "delete":
-          todo_list.splice(i, 1);
+          print_todos(todo_list.splice(i, 1));
           break;
         case "mark":
           todo_list[i].status = desc_or_status;
           todo_list[i].updatedAt = get_current_date();
+          print_todos([todo_list[i]]);
           break;
         case "update":
           todo_list[i].description = desc_or_status;
           todo_list[i].updatedAt = get_current_date();
+          print_todos([todo_list[i]]);
           break;
         default:
           break;
@@ -84,7 +87,7 @@ export const update_list = (
   write_to_File(todo_list);
 };
 
-export const print_todos = (todo_list: Todo[], status: string) => {
+export const print_todos = (todo_list: Todo[], status: string = "") => {
   const table = new Table({
     head: ["Id", "Description", "Status", "Created At", "Updated At"],
   });
