@@ -9,35 +9,35 @@ import {
 } from "./functions";
 
 export async function taskhub(commands: string[]) {
-  let todo_list: Todo[] = [];
+  let taskhub_list: Todo[] = [];
 
   const command = commands[1];
   let id: string = commands[2];
   let desc_or_status: string = "";
 
-  todo_list = await get_list();
+  taskhub_list = await get_list();
 
   switch (command) {
     case "add":
       desc_or_status = commands[2];
-      add_todo(todo_list, desc_or_status);
+      add_todo(taskhub_list, desc_or_status);
       break;
     case "delete":
     case "mark":
     case "update":
-      if (todo_list.length == 0) {
+      if (taskhub_list.length == 0) {
         console.log("Your list of tasks is empty.");
       } else {
         desc_or_status = commands[2];
-        update_list(command, todo_list, id, desc_or_status);
+        update_list(command, taskhub_list, id, desc_or_status);
       }
       break;
     case "list":
-      if (todo_list.length == 0) {
+      if (taskhub_list.length == 0) {
         console.log("Your list of tasks is empty.");
       } else {
         desc_or_status = commands[2];
-        print_todos(todo_list, desc_or_status);
+        print_todos(taskhub_list, desc_or_status);
       }
       break;
     case "help":
