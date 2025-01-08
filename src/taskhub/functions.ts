@@ -107,7 +107,7 @@ export const print_todos = (todo_list: Todo[], status: string = "") => {
 
 export const help = () => {
   console.log(
-    "Task Tracker - A command line application used to track and manage your tasks."
+    "TaskHub - A command line application used to track and manage your tasks."
   );
   console.log("\nOptions:");
   console.log("add       Add a new task to your list of tasks.");
