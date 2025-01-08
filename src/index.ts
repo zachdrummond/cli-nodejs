@@ -6,7 +6,7 @@ import {
   get_list,
   print_todos,
   update_list,
-  help
+  help,
 } from "./functions";
 
 let todo_list: Todo[] = [];
@@ -28,12 +28,20 @@ if (process.argv.length > 2) {
       case "delete":
       case "mark":
       case "update":
-        desc_or_status = commands[2];
-        update_list(command, todo_list, id, desc_or_status);
+        if (todo_list.length == 0) {
+          console.log("Your list of tasks is empty.");
+        } else {
+          desc_or_status = commands[2];
+          update_list(command, todo_list, id, desc_or_status);
+        }
         break;
       case "list":
-        desc_or_status = commands[1];
-        print_todos(todo_list, desc_or_status);
+        if (todo_list.length == 0) {
+          console.log("Your list of tasks is empty.");
+        } else {
+          desc_or_status = commands[1];
+          print_todos(todo_list, desc_or_status);
+        }
         break;
       case "help":
       default:
