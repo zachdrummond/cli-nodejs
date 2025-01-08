@@ -1,4 +1,4 @@
-import { stat } from "node:fs";
+import Table from "cli-table";
 import * as fs from "node:fs/promises";
 import path from "path";
 
@@ -70,9 +70,11 @@ export const update_list = (
           break;
         case "mark":
           todo_list[i].status = desc_or_status;
+          todo_list[i].updatedAt = get_current_date();
           break;
         case "update":
           todo_list[i].description = desc_or_status;
+          todo_list[i].updatedAt = get_current_date();
           break;
         default:
           break;
@@ -83,16 +85,25 @@ export const update_list = (
 };
 
 export const list_todos = (todo_list: Todo[], status: string) => {
-  if (status === "") {
+  const table = new Table({
+    head: ["Id", "Description", "Status", "Created At", "Updated At"],
+  });
+
+  if (status === "" || status === undefined) {
     console.table(todo_list);
   } else {
-    const todo_list_by_status = [];
     for (let i = 0; i < todo_list.length; i++) {
       if (todo_list[i].status === status)
-        todo_list_by_status.push(todo_list[i]);
+        table.push([
+      todo_list[i].id.toString(),
+      todo_list[i].description,
+      todo_list[i].status,
+      todo_list[i].createdAt,
+      todo_list[i].updatedAt,
+      ]);
     }
-    console.table(todo_list_by_status);
   }
+  console.log(table.toString());
 };
 
 // function isValidStatus(status: string): status is Status {

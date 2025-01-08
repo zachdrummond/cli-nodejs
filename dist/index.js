@@ -40,21 +40,24 @@ let todo_list = [];
 if (process.argv.length > 2) {
     const commands = process.argv.slice(2);
     const command = commands[0];
+    let id = commands[1];
+    let desc_or_status = "";
     (async function () {
-        todo_list = await (0, functions_1.get_todo_list)();
+        todo_list = await (0, functions_1.get_list)();
         switch (command) {
             case "add":
-                const description = commands[1];
-                (0, functions_1.add_todo_list)(todo_list, description);
-                break;
-            case "update":
-                console.log("update");
+                desc_or_status = commands[1];
+                (0, functions_1.add_todo)(todo_list, desc_or_status);
                 break;
             case "delete":
-                console.log("delete");
+            case "mark":
+            case "update":
+                desc_or_status = commands[2];
+                (0, functions_1.update_list)(command, todo_list, id, desc_or_status);
                 break;
             case "list":
-                console.log("list");
+                desc_or_status = commands[1];
+                (0, functions_1.list_todos)(todo_list, desc_or_status);
                 break;
             default:
                 console.log("default");

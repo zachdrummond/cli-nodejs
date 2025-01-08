@@ -36,8 +36,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.get_todo_list = get_todo_list;
-exports.add_todo_list = add_todo_list;
+exports.list_todos = exports.update_list = exports.add_todo = void 0;
+exports.get_list = get_list;
+const cli_table_1 = __importDefault(require("cli-table"));
 const fs = __importStar(require("node:fs/promises"));
 const path_1 = __importDefault(require("path"));
 const file_path = path_1.default.join(__dirname, "todo-list.json");
@@ -46,9 +47,19 @@ const get_current_date = () => {
     const month = now.getMonth() + 1;
     const day = now.getDate();
     const year = now.getFullYear();
-    return `${month}-${day}-${year}`;
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    return `${month}/${day}/${year} ${hours}:${minutes}`;
 };
-async function get_todo_list() {
+async function write_to_File(todo_list) {
+    try {
+        await fs.writeFile(file_path, JSON.stringify(todo_list, null, 2));
+    }
+    catch (err) {
+        throw err;
+    }
+}
+async function get_list() {
     try {
         const data = await fs.readFile(file_path, "utf-8");
         return data ? JSON.parse(data) : [];
@@ -60,7 +71,7 @@ async function get_todo_list() {
         throw err;
     }
 }
-async function add_todo_list(todo_list, description) {
+const add_todo = (todo_list, description) => {
     let todo_id = 0;
     if (todo_list.length === 0) {
         todo_id = 1;
@@ -77,10 +88,56 @@ async function add_todo_list(todo_list, description) {
         updatedAt: get_current_date(),
     };
     todo_list.push(todo);
-    try {
-        await fs.writeFile(file_path, JSON.stringify(todo_list, null, 2));
+    write_to_File(todo_list);
+};
+exports.add_todo = add_todo;
+const update_list = (command, todo_list, id, desc_or_status) => {
+    for (let i = 0; i < todo_list.length; i++) {
+        if (id === todo_list[i].id.toString()) {
+            switch (command) {
+                case "delete":
+                    todo_list.splice(i, 1);
+                    break;
+                case "mark":
+                    todo_list[i].status = desc_or_status;
+                    todo_list[i].updatedAt = get_current_date();
+                    break;
+                case "update":
+                    todo_list[i].description = desc_or_status;
+                    todo_list[i].updatedAt = get_current_date();
+                    break;
+                default:
+                    break;
+            }
+        }
     }
-    catch (err) {
-        throw err;
+    write_to_File(todo_list);
+};
+exports.update_list = update_list;
+const list_todos = (todo_list, status) => {
+    const table = new cli_table_1.default();
+    if (status === "") {
+        table.push(todo_list);
+        console.log(table.toString());
     }
-}
+    else {
+        const todo_list_by_status = [];
+        for (let i = 0; i < todo_list.length; i++) {
+            if (todo_list[i].status === status)
+                todo_list_by_status.push(todo_list[i]);
+        }
+        table.push(todo_list_by_status);
+        console.log(table.toString());
+    }
+};
+exports.list_todos = list_todos;
+// function isValidStatus(status: string): status is Status {
+//     return ["todo", "in-progress", "done"].includes(status);
+// }
+// let statusString: string = "todo"; // Could be dynamic
+// if (isValidStatus(statusString)) {
+//     let taskStatus: Status = statusString;
+// } else {
+//     // Handle the invalid status case
+//     console.error("Invalid status value");
+// }
