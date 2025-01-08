@@ -6,6 +6,7 @@ import {
   get_list,
   print_todos,
   update_list,
+  help
 } from "./functions";
 
 let todo_list: Todo[] = [];
@@ -34,8 +35,9 @@ if (process.argv.length > 2) {
         desc_or_status = commands[1];
         print_todos(todo_list, desc_or_status);
         break;
+      case "help":
       default:
-        console.log("default");
+        help();
     }
   })();
 }

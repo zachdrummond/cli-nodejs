@@ -105,6 +105,19 @@ export const print_todos = (todo_list: Todo[], status: string = "") => {
   console.log(table.toString());
 };
 
+export const help = () => {
+  console.log(
+    "Task Tracker - A command line application used to track and manage your tasks."
+  );
+  console.log("\nOptions:");
+  console.log("add       Add a new task to your list of tasks.");
+  console.log("delete    Delete a task from your list of tasks.");
+  console.log("update    Update a task from your list of tasks.");
+  console.log("mark      Change the status of a task from your list of tasks.");
+  console.log("list      List all of your tasks or filter them by status.");
+  console.log("help      Show the list of command options.");
+};
+
 // function isValidStatus(status: string): status is Status {
 //     return ["todo", "in-progress", "done"].includes(status);
 // }
