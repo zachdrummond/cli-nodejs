@@ -1,5 +1,4 @@
 "use strict";
-/// <reference path="C:\Users\zachd\Documents\Coding\cli-nodejs\types\todo.d.ts" />
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -35,32 +34,15 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 const process = __importStar(require("node:process"));
-const functions_1 = require("./functions");
-let todo_list = [];
+const taskhub_1 = require("./taskhub/taskhub");
 if (process.argv.length > 2) {
     const commands = process.argv.slice(2);
-    const command = commands[0];
-    let id = commands[1];
-    let desc_or_status = "";
-    (async function () {
-        todo_list = await (0, functions_1.get_list)();
-        switch (command) {
-            case "add":
-                desc_or_status = commands[1];
-                (0, functions_1.add_todo)(todo_list, desc_or_status);
-                break;
-            case "delete":
-            case "mark":
-            case "update":
-                desc_or_status = commands[2];
-                (0, functions_1.update_list)(command, todo_list, id, desc_or_status);
-                break;
-            case "list":
-                desc_or_status = commands[1];
-                (0, functions_1.list_todos)(todo_list, desc_or_status);
-                break;
-            default:
-                console.log("default");
-        }
-    })();
+    switch (commands[0]) {
+        case "taskhub":
+            (0, taskhub_1.taskhub)(commands);
+            break;
+        default:
+            console.log("default");
+            break;
+    }
 }
