@@ -1,0 +1,12 @@
+{
+  "name": "cli-commander",
+  "version": "1.0.0",
+  "description": "A package to command all packages within cli-nodejs",
+  "main": "index.ts",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Zach Drummond",
+  "license": "ISC"
+}
