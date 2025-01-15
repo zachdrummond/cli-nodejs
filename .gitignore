@@ -1,8 +1,7 @@
 node_modules
 
 #typescript
-tsconfig.json
+**/tsconfig.json
+**/tsconfig.build.json
+**/tsconfig.tsbuildinfo
 types/*
-
-#vscode
-.vscode
