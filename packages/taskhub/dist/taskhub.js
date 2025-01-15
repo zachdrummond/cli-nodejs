@@ -39,3 +39,4 @@ async function taskhub(commands) {
             (0, functions_1.help)();
     }
 }
+//# sourceMappingURL=taskhub.js.map

@@ -153,3 +153,4 @@ const help = () => {
     console.log("help      Show the list of command options.");
 };
 exports.help = help;
+//# sourceMappingURL=functions.js.map
