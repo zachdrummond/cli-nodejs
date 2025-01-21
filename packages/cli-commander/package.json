@@ -1,12 +1,20 @@
 {
-  "name": "cli-commander",
+  "name": "@cli-nodejs/cli-commander",
   "version": "1.0.0",
   "description": "A package to command all packages within cli-nodejs",
-  "main": "index.ts",
-  "devDependencies": {},
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "node --watch -r ts-node/register src/index.ts"
   },
   "author": "Zach Drummond",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "@cli-nodejs/taskhub": "^1.0.0"
+  }
 }

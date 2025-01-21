@@ -1,17 +1,14 @@
 {
-  "name": "taskhub",
+  "name": "@cli-nodejs/taskhub",
   "version": "1.0.0",
   "description": "A project used to to track and manage your tasks.",
-  "main": "index.js",
-  "scripts": {
-    "build": "tsc",
-    "start": "node dist/index.js",
-    "dev": "node --watch -r ts-node/register src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
   "author": "Zach Drummond",
   "license": "ISC",
+  "main": "dist/taskhub.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "types": "dist/taskhub.d.ts",
   "devDependencies": {
     "@types/cli-table": "^0.3.4",
     "@types/node": "^22.10.1",

@@ -34,7 +34,7 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 const process = __importStar(require("node:process"));
-const taskhub_1 = require("./taskhub");
+const taskhub_1 = require("@cli-nodejs/taskhub");
 if (process.argv.length > 2) {
     const commands = process.argv.slice(2);
     switch (commands[0]) {

@@ -1,5 +1,5 @@
 import * as process from "node:process";
-import { taskhub } from "./taskhub";
+import {taskhub} from "@cli-nodejs/taskhub"
 
 if (process.argv.length > 2) {
   const commands = process.argv.slice(2);
