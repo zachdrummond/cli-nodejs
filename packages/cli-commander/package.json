@@ -1,7 +1,7 @@
 {
   "name": "@cli-nodejs/cli-commander",
   "version": "1.0.0",
-  "description": "A package to command all packages within cli-nodejs",
+  "description": "A command line interface application used to command all packages within cli-nodejs",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",

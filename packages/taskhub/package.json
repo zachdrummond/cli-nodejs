@@ -1,7 +1,7 @@
 {
   "name": "@cli-nodejs/taskhub",
   "version": "1.0.0",
-  "description": "A project used to to track and manage your tasks.",
+  "description": "A command line interface application used to track and manage your tasks.",
   "author": "Zach Drummond",
   "license": "ISC",
   "main": "dist/taskhub.js",
