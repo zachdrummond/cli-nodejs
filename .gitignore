@@ -1,5 +1,7 @@
 node_modules
 
+**/dist
+
 #typescript
 **/tsconfig.json
 **/tsconfig.build.json
