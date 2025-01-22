@@ -1,20 +1,13 @@
-# TaskHub
+# CLI-NODEJS
 
 ## Description
-A command line interface application used to track and manage your tasks.
+A monorepo for backend development with Node.js using npm workspaces.
 
-## Features
-- Add, Update, and Delete tasks
-- Mark a task as in progress or done
-- List all tasks
-- List all tasks that are done
-- List all tasks that are not done
-- List all tasks that are in progress
-- List all the commands to use the app
+## Packages
+- CLI-Commander: A command line interface application used to command all packages within cli-nodejs.
+- Taskhub: A CLI application used to track and manage your tasks.
 
 ## Tools
 - Node.js: https://nodejs.org/en
-- CLI Table: https://www.npmjs.com/package/cli-table
-
-## Credits
-https://roadmap.sh/projects/task-tracker
+- NPM Workspaces: https://docs.npmjs.com/cli/v11/using-npm/workspaces
+- TypeScript: https://www.typescriptlang.org/

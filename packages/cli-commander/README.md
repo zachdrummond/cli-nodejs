@@ -8,7 +8,4 @@ A command line interface application used to command all packages within cli-nod
 
 ## Tools
 - Node.js: https://nodejs.org/en
-- CLI Table: https://www.npmjs.com/package/cli-table
-
-## Credits
-https://roadmap.sh/projects/task-tracker
+- TypeScript: https://www.typescriptlang.org/
