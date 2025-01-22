@@ -13,9 +13,9 @@ A command line interface application used to track and manage your tasks.
 - List all the commands to use the app
 
 ## Tools
-- Node.js: https://nodejs.org/en
-- CLI Table: https://www.npmjs.com/package/cli-table
-- TypeScript: https://www.typescriptlang.org/
+- [Node.js](https://nodejs.org/en)
+- [CLI Table](https://www.npmjs.com/package/cli-table)
+- [TypeScript](https://www.typescriptlang.org/)
 
 ## Credits
 https://roadmap.sh/projects/task-tracker
