@@ -9,7 +9,7 @@
     "scripts": {
         "build": "tsc --build --verbose tsconfig.build.json",
         "start": "node packages/cli-commander/dist/index.js",
-        "dev": "node --watch -r ts-node/register src/index.ts",
+        "dev": "node --watch -r ts-node/register src/index.ts"
     },
     "keywords": [],
     "author": "Zach Drummond",
