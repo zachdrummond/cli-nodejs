@@ -8,8 +8,14 @@ if (process.argv.length > 2) {
     case "taskhub":
       taskhub(commands);
       break;
+    case "help":
     default:
-      console.log("default");
+      console.log(
+        "CLI Commander - A command line interface application used to command all packages within cli-nodejs."
+      );
+      console.log("\nOptions:");
+      console.log("taskhub   Track and manage your tasks.");
+      console.log("help      Show the list of command options.");
       break;
   }
 }
