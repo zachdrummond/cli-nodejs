@@ -14,6 +14,10 @@ A command line interface application used to track and manage your tasks.
 
 ## Installation and Usage
 - Add a task
+```
+npm start taskhub add 'Create a list of tasks'
+
+```
 - Update a task
 - Mark a task as in progress
 - Mark a task as done

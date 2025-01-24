@@ -10,12 +10,7 @@ const file_path: string = path.join(__dirname, "taskhub-list.json");
  */
 const get_current_date = (): string => {
   const now = new Date();
-  const month = now.getMonth() + 1;
-  const day = now.getDate();
-  const year = now.getFullYear();
-  const hours = now.getHours();
-  const minutes = now.getMinutes();
-  return `${month}/${day}/${year} ${hours}:${minutes}`;
+  return `${now.toLocaleString()}`;
 };
 
 /**
