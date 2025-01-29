@@ -12,17 +12,12 @@ A command line interface application used to track and manage your tasks.
 - List all tasks that are in progress
 - List all the commands to use the app
 
-## Installation and Usage
-- Add a task
-```
-npm start taskhub add 'Create a list of tasks'
-
-```
-- Update a task
-- Mark a task as in progress
-- Mark a task as done
-- List all tasks
-- Delete a task
+## Usage
+- Add a task: `npm start taskhub add '<Task Description>'`
+- Update a task's description: `npm start taskhub update <Task ID> '<Task Description>'`
+- Mark a task as done:`npm start taskhub mark <Task ID> '<Task Status>'`
+- List all tasks `npm start taskhub list`
+- Delete a task `npm start taskhub delete <Task ID>`
 
 ## Tools
 - [Node.js](https://nodejs.org/en)

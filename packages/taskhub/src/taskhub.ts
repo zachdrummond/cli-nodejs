@@ -28,7 +28,7 @@ export async function taskhub(commands: string[]) {
       if (taskhub_list.length == 0) {
         console.log("Your list of tasks is empty.");
       } else {
-        desc_or_status = commands[2];
+        desc_or_status = commands[3];
         update_list(command, taskhub_list, id, desc_or_status);
       }
       break;
