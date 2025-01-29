@@ -6,7 +6,7 @@ import path from "path";
 const file_path: string = path.join(__dirname, "taskhub-list.json");
 
 /**
- * @returns Current Date Time - MM/DD/YYYY HH:MM
+ * @returns Current Date Time - MM/DD/YYYY HH:MM:SS
  */
 const get_current_date = (): string => {
   const now = new Date();
@@ -14,10 +14,10 @@ const get_current_date = (): string => {
 };
 
 /**
- * Recreates taskhub-list.json based on given taskhub_list
+ * Recreates taskhub-list.json based on given list of tasks
  * @param taskhub_list
  */
-async function write_to_File(taskhub_list: Todo[]): Promise<void> {
+async function write_to_File(taskhub_list: Task[]): Promise<void> {
   try {
     await fs.writeFile(file_path, JSON.stringify(taskhub_list, null, 2));
   } catch (err) {
@@ -25,10 +25,14 @@ async function write_to_File(taskhub_list: Todo[]): Promise<void> {
   }
 }
 
-export async function get_list(): Promise<Todo[]> {
+/**
+ * Retrieves the current list of tasks
+ * @returns Array of Tasks
+ */
+export async function get_list(): Promise<Task[]> {
   try {
     const data = await fs.readFile(file_path, "utf-8");
-    return data ? (JSON.parse(data) as Todo[]) : [];
+    return data ? (JSON.parse(data) as Task[]) : [];
   } catch (err: any) {
     // Handles file does not exist error
     if (err.errno === -4058 && err.code === "ENOENT") return [];
@@ -36,33 +40,33 @@ export async function get_list(): Promise<Todo[]> {
   }
 }
 
-export const add_todo = (taskhub_list: Todo[], description: string) => {
-  let todo_id: number = 0;
+export const add_task = (taskhub_list: Task[], description: string) => {
+  let task_id: number = 0;
 
   if (taskhub_list.length === 0) {
-    todo_id = 1;
+    task_id = 1;
   } else {
-    todo_id = taskhub_list[taskhub_list.length - 1].id;
-    todo_id++;
+    task_id = taskhub_list[taskhub_list.length - 1].id;
+    task_id++;
   }
 
-  const todo: Todo = {
-    id: todo_id,
+  const task: Task = {
+    id: task_id,
     description: description,
-    status: "todo",
+    status: "task",
     createdAt: get_current_date(),
     updatedAt: get_current_date(),
   };
 
-  taskhub_list.push(todo);
-  print_todos([todo]);
+  taskhub_list.push(task);
+  print_tasks([task]);
 
   write_to_File(taskhub_list);
 };
 
 export const update_list = (
   command: string,
-  taskhub_list: Todo[],
+  taskhub_list: Task[],
   id: string,
   desc_or_status: string
 ) => {
@@ -70,17 +74,17 @@ export const update_list = (
     if (id === taskhub_list[i].id.toString()) {
       switch (command) {
         case "delete":
-          print_todos(taskhub_list.splice(i, 1));
+          print_tasks(taskhub_list.splice(i, 1));
           break;
         case "mark":
           taskhub_list[i].status = desc_or_status;
           taskhub_list[i].updatedAt = get_current_date();
-          print_todos([taskhub_list[i]]);
+          print_tasks([taskhub_list[i]]);
           break;
         case "update":
           taskhub_list[i].description = desc_or_status;
           taskhub_list[i].updatedAt = get_current_date();
-          print_todos([taskhub_list[i]]);
+          print_tasks([taskhub_list[i]]);
           break;
         default:
           break;
@@ -90,7 +94,7 @@ export const update_list = (
   write_to_File(taskhub_list);
 };
 
-export const print_todos = (taskhub_list: Todo[], status: string = "") => {
+export const print_tasks = (taskhub_list: Task[], status: string = "") => {
   const table = new Table({
     head: ["Id", "Description", "Status", "Created At", "Updated At"],
   });

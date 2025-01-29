@@ -1,15 +1,15 @@
-/// <reference path="C:\Users\zachd\Documents\Coding\cli-nodejs\types\todo.d.ts" />
+/// <reference path="C:\Users\zachd\Documents\Coding\cli-nodejs\types\task.d.ts" />
 
 import {
-  add_todo,
+  add_task,
   get_list,
-  print_todos,
+  print_tasks,
   update_list,
   help,
 } from "./functions";
 
 export async function taskhub(commands: string[]) {
-  let taskhub_list: Todo[] = [];
+  let taskhub_list: Task[] = [];
 
   const command = commands[1];
   let id: string = commands[2];
@@ -20,7 +20,7 @@ export async function taskhub(commands: string[]) {
   switch (command) {
     case "add":
       desc_or_status = commands[2];
-      add_todo(taskhub_list, desc_or_status);
+      add_task(taskhub_list, desc_or_status);
       break;
     case "delete":
     case "mark":
@@ -37,7 +37,7 @@ export async function taskhub(commands: string[]) {
         console.log("Your list of tasks is empty.");
       } else {
         desc_or_status = commands[2];
-        print_todos(taskhub_list, desc_or_status);
+        print_tasks(taskhub_list, desc_or_status);
       }
       break;
     case "help":
