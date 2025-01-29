@@ -11,6 +11,3 @@ A monorepo for backend development with Node.js using npm workspaces.
 - [Node.js](https://nodejs.org/en)
 - [NPM Workspaces](https://docs.npmjs.com/cli/v11/using-npm/workspaces)
 - [TypeScript](https://www.typescriptlang.org/)
-
-## Credits
-- [roadmap.sh](https://roadmap.sh/projects/task-tracker)
