@@ -25,4 +25,4 @@ A command line interface application used to track and manage your tasks.
 - [TypeScript](https://www.typescriptlang.org/)
 
 ## Credits
-https://roadmap.sh/projects/task-tracker
+- [roadmap.sh](https://roadmap.sh/projects/task-tracker)
