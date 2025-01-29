@@ -40,6 +40,11 @@ export async function get_list(): Promise<Task[]> {
   }
 }
 
+/**
+ * Adds a new task to the list of tasks
+ * @param taskhub_list
+ * @param description
+ */
 export const add_task = (taskhub_list: Task[], description: string) => {
   let task_id: number = 0;
 
@@ -64,6 +69,13 @@ export const add_task = (taskhub_list: Task[], description: string) => {
   write_to_File(taskhub_list);
 };
 
+/**
+ * Updates or deletes a task based on id and desc_or_status
+ * @param command delete, mark, update
+ * @param taskhub_list
+ * @param id
+ * @param desc_or_status
+ */
 export const update_list = (
   command: string,
   taskhub_list: Task[],
@@ -94,6 +106,11 @@ export const update_list = (
   write_to_File(taskhub_list);
 };
 
+/**
+ * Prints the current list of tasks to the console
+ * @param taskhub_list
+ * @param status The filter for the tasks
+ */
 export const print_tasks = (taskhub_list: Task[], status: string = "") => {
   const table = new Table({
     head: ["Id", "Description", "Status", "Created At", "Updated At"],
@@ -112,6 +129,9 @@ export const print_tasks = (taskhub_list: Task[], status: string = "") => {
   console.log(table.toString());
 };
 
+/**
+ * Prints the list of commands for this application
+ */
 export const help = () => {
   console.log(
     "TaskHub - A command line application used to track and manage your tasks."
