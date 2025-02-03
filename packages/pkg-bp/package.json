@@ -1,0 +1,11 @@
+{
+  "name": "@cli-nodejs/pkg-bp",
+  "version": "1.0.0",
+  "description": "A command line interface application used for the cli-nodejs monorepo to create the boilerplate files for a new package.",
+  "author": "Zach Drummond",
+  "license": "ISC",
+  "main": "pkg-bp.js",
+  "devDependencies": {},
+  "scripts": {
+  }
+}
