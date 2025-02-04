@@ -4,8 +4,8 @@
   "description": "A command line interface application used for the cli-nodejs monorepo to create the boilerplate files for a new package.",
   "author": "Zach Drummond",
   "license": "ISC",
-  "main": "pkg-bp.js",
-  "devDependencies": {},
+  "main": "dist/pkg-bp.js",
+  "types": "dist/pkg-bp.d.ts",
   "scripts": {
   }
 }

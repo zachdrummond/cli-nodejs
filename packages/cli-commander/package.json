@@ -3,18 +3,19 @@
   "version": "1.0.0",
   "description": "A command line interface application used to command all packages within cli-nodejs",
   "main": "dist/index.js",
+  "author": "Zach Drummond",
+  "license": "ISC",
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
     "dev": "node --watch -r ts-node/register src/index.ts"
   },
-  "author": "Zach Drummond",
-  "license": "ISC",
   "devDependencies": {
     "ts-node": "^10.9.2",
     "typescript": "^5.7.2"
   },
   "dependencies": {
+    "@cli-nodejs/pkg-bp": "^1.0.0",
     "@cli-nodejs/taskhub": "^1.0.0"
   }
 }

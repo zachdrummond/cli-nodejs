@@ -5,10 +5,10 @@
   "author": "Zach Drummond",
   "license": "ISC",
   "main": "dist/taskhub.js",
+  "types": "dist/taskhub.d.ts",
   "scripts": {
     "build": "tsc"
   },
-  "types": "dist/taskhub.d.ts",
   "devDependencies": {
     "@types/cli-table": "^0.3.4",
     "@types/node": "^22.10.1",
