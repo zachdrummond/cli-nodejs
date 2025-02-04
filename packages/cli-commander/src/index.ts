@@ -11,7 +11,7 @@ if (process.argv.length > 2) {
       break;
     case "boilerplate":
     case "pkg-bp":
-      package_boilerplate();
+      package_boilerplate(commands);
       break;
     case "help":
     default:
@@ -19,8 +19,9 @@ if (process.argv.length > 2) {
         "CLI Commander - A command line interface application used to command all packages within cli-nodejs."
       );
       console.log("\nOptions:");
-      console.log("taskhub   Track and manage your tasks.");
-      console.log("help      Show the list of command options.");
+      console.log("taskhub       Track and manage your tasks.");
+      console.log("boilerplate   Create the boilerplate files for a new package.");
+      console.log("help          Show the list of command options.");
       break;
   }
 }
