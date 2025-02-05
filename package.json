@@ -3,6 +3,8 @@
     "version": "1.0.0",
     "description": "A project used to to track and manage your tasks.",
     "main": "index.js",
+    "author": "Zach Drummond (https://zachdrummond.com/)",
+    "license": "ISC",
     "workspaces": [
         "packages/*"
     ],
@@ -11,9 +13,6 @@
         "start": "node packages/cli-commander/dist/index.js",
         "dev": "node --watch -r ts-node/register src/index.ts"
     },
-    "keywords": [],
-    "author": "Zach Drummond",
-    "license": "ISC",
     "devDependencies": {
         "@tsconfig/recommended": "^1.0.8",
         "@types/node": "^22.10.1",

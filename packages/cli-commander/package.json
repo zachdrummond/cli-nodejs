@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A command line interface application used to command all packages within cli-nodejs",
   "main": "dist/index.js",
-  "author": "Zach Drummond",
+  "author": "Zach Drummond (https://zachdrummond.com/)",
   "license": "ISC",
   "scripts": {
     "build": "tsc",
