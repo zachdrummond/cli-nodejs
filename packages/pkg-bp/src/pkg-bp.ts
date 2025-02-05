@@ -14,7 +14,7 @@ export function package_boilerplate(commands: string[]) {
 
   // Step 1: Initialize the new package
   try {
-    execSync(`npm init -w ./${packagePath} -y`, { stdio: "inherit" });
+    execSync(`npm init -w ./${packagePath} --scope=@cli-nodejs -y`, { stdio: "inherit" });
     console.log(`Package "${packageName}" created successfully.`);
 
     // Step 2: Create tsconfig.json
