@@ -1,6 +1,7 @@
 import Table from "cli-table";
-import * as fs from "node:fs/promises";
+import * as fs from "fs/promises";
 import path from "path";
+import { fileURLToPath } from "url";
 
 declare interface Task {
   id: number,
@@ -8,9 +9,11 @@ declare interface Task {
   status: string,
   createdAt: string,
   updatedAt: string
-};
+}
 
 // Location of taskhub-list.json
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const file_path: string = path.join(__dirname, "taskhub-list.json");
 
 /**

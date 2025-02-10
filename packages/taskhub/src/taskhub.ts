@@ -4,7 +4,7 @@ declare interface Task {
   status: string,
   createdAt: string,
   updatedAt: string
-};
+}
 
 import {
   add_task,
@@ -12,7 +12,7 @@ import {
   print_tasks,
   update_list,
   help,
-} from "./functions";
+} from "./functions.js";
 
 export default async function taskhub(commands: string[]) {
   let taskhub_list: Task[] = [];
