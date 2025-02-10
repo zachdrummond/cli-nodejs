@@ -1,6 +1,6 @@
 import * as process from "node:process";
-import { taskhub } from "@cli-nodejs/taskhub";
-import { package_boilerplate } from "@cli-nodejs/pkg-bp";
+import taskhub from "@cli-nodejs/taskhub";
+import package_boilerplate from "@cli-nodejs/pkg-bp";
 
 const commands = process.argv.slice(2);
 

@@ -2,7 +2,7 @@ import { execSync } from "child_process";
 import fs from "fs";
 import path from "path";
 
-export function package_boilerplate(commands: string[]) {
+export default function package_boilerplate(commands: string[]) {
   const packageName = commands[1];
 
   if (!packageName) {

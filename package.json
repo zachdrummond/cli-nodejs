@@ -5,6 +5,7 @@
     "main": "index.js",
     "author": "Zach Drummond (https://zachdrummond.com/)",
     "license": "ISC",
+    "type": "module",
     "workspaces": [
         "packages/*"
     ],

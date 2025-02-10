@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "author": "Zach Drummond (https://zachdrummond.com/)",
   "license": "ISC",
+  "type": "module",
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",

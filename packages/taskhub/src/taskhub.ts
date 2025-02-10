@@ -1,4 +1,10 @@
-/// <reference path="C:\Users\zachd\Documents\Coding\cli-nodejs\types\task.d.ts" />
+declare interface Task {
+  id: number,
+  description: string,
+  status: string,
+  createdAt: string,
+  updatedAt: string
+};
 
 import {
   add_task,
@@ -8,7 +14,7 @@ import {
   help,
 } from "./functions";
 
-export async function taskhub(commands: string[]) {
+export default async function taskhub(commands: string[]) {
   let taskhub_list: Task[] = [];
 
   const command = commands[1];

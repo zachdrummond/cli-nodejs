@@ -5,6 +5,7 @@
   "author": "Zach Drummond (https://zachdrummond.com/)",
   "license": "ISC",
   "main": "dist/pkg-bp.js",
+  "type": "module",
   "types": "dist/pkg-bp.d.ts",
   "scripts": {
   }

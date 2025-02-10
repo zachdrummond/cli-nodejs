@@ -5,6 +5,7 @@
   "author": "Zach Drummond (https://zachdrummond.com/)",
   "license": "ISC",
   "main": "dist/taskhub.js",
+  "type": "module",
   "types": "dist/taskhub.d.ts",
   "scripts": {
     "build": "tsc"
