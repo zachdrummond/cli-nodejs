@@ -6,4 +6,5 @@ node_modules
 **/tsconfig.json
 **/tsconfig.build.json
 **/tsconfig.tsbuildinfo
+**/shared/types.d.ts
 types/*

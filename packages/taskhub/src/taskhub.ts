@@ -1,11 +1,3 @@
-declare interface Task {
-  id: number,
-  description: string,
-  status: string,
-  createdAt: string,
-  updatedAt: string
-}
-
 import {
   add_task,
   get_list,

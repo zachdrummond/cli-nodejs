@@ -3,14 +3,6 @@ import * as fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
 
-declare interface Task {
-  id: number,
-  description: string,
-  status: string,
-  createdAt: string,
-  updatedAt: string
-}
-
 // Location of taskhub-list.json
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
