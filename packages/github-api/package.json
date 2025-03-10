@@ -1,0 +1,14 @@
+{
+  "name": "@cli-nodejs/github-api",
+  "version": "1.0.0",
+  "author": "Zach Drummond (https://zachdrummond.com/)",
+  "license": "ISC",
+  "description": "A command line interface application used to interact with the GitHub API.",
+  "main": "dist/github-api.ts",
+  "type": "module",
+  "types": "dist/github-api.d.ts",
+  "devDependencies": {},
+  "scripts": {
+    "build": "tsc"
+  }
+}
