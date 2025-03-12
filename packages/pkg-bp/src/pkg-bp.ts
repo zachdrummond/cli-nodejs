@@ -42,8 +42,8 @@ export default async function package_boilerplate(
     );
 
     // Step 3: Create README.md
-    const readmeContent = `
-# ${packageName}
+    const readmeContent =
+`# ${packageName}
 
 ## Description
 <Insert description here>

@@ -1,4 +1,4 @@
 
-    export default function github-api() {
+    export default function github_api() {
       console.log("Hello from github-api!");
     }

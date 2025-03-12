@@ -1,16 +1,24 @@
 import * as process from "node:process";
-import taskhub from "@cli-nodejs/taskhub";
+import github_api from "@cli-nodejs/github-api";
 import package_boilerplate from "@cli-nodejs/pkg-bp";
+import taskhub from "@cli-nodejs/taskhub";
 
 const commands = process.argv.slice(2);
 
 switch (commands[0]) {
-  case "taskhub":
-    taskhub(commands);
+  case "github-api":
+  case "gh-api":
+  case "gh":
+    console.log("GITHUB API");
+    github_api();
     break;
   case "boilerplate":
+  case "bp":
   case "pkg-bp":
     package_boilerplate(commands);
+    break;
+  case "taskhub":
+    taskhub(commands);
     break;
   case "help":
   default:

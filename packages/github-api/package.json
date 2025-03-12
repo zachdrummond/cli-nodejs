@@ -4,7 +4,7 @@
   "author": "Zach Drummond (https://zachdrummond.com/)",
   "license": "ISC",
   "description": "A command line interface application used to interact with the GitHub API.",
-  "main": "dist/github-api.ts",
+  "main": "dist/github-api.js",
   "type": "module",
   "types": "dist/github-api.d.ts",
   "devDependencies": {},
