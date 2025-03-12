@@ -9,8 +9,7 @@ switch (commands[0]) {
   case "github-api":
   case "gh-api":
   case "gh":
-    console.log("GITHUB API");
-    github_api();
+    github_api(commands);
     break;
   case "boilerplate":
   case "bp":
