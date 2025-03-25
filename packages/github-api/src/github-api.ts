@@ -4,7 +4,7 @@ export default async function github_api(commands: string[]) {
 
   const fetch_activity = async (
     username: string
-  ): Promise<{ status?: string; message?: string; data?: any }> => {
+  ): Promise<{ status?: string; message?: string; data?: any[] }> => {
     const response = await fetch(`${api_url}/users/${username}/events`);
 
     switch (response.status) {
@@ -16,5 +16,19 @@ export default async function github_api(commands: string[]) {
     }
   };
 
-  console.log((await fetch_activity(username)).data);
+  const do_something = async () => {
+    const response = await fetch_activity(username);
+
+    if (response.status === "Success" && response.data) {
+      console.log("Output:");
+      const num_events = response.data.length;
+      for (let i = 0; i < num_events; i++) {
+        console.log("Type:", response.data[i].type);
+      }
+    } else {
+      console.error(response.message);
+    }
+  };
+
+  await do_something();
 }
