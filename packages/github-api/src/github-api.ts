@@ -23,7 +23,7 @@ export default async function github_api(commands: string[]) {
       console.log("Output:");
       const num_events = response.data.length;
       for (let i = 0; i < num_events; i++) {
-        console.log(`Event #${i}`, "Type:", response.data[i].type, "Actor:", response.data[i].actor.login);
+        console.log(`Event #${i}`, "Date: ", response.data[i].created_at, "Type:", response.data[i].type, "Actor:", response.data[i].actor.login, "Repo:", response.data[i].repo.name, "# Commits:", response.data[i].payload.commits.length);
       }
     } else {
       console.error(response.message);
