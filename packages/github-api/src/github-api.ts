@@ -22,8 +22,78 @@ export default async function github_api(commands: string[]) {
     if (response.status === "Success" && response.data) {
       console.log("Output:");
       const num_events = response.data.length;
+
       for (let i = 0; i < num_events; i++) {
-        console.log(`Event #${i}`, "Date: ", response.data[i].created_at, "Type:", response.data[i].type, "Actor:", response.data[i].actor.login, "Repo:", response.data[i].repo.name, "# Commits:", response.data[i].payload.commits.length);
+        console.log(
+          `Event #${i}`,
+          "Date: ",
+          response.data[i].created_at,
+          "Type:",
+          response.data[i].type,
+          "Actor:",
+          response.data[i].actor.login,
+          "Repo:",
+          response.data[i].repo.name,
+          "# Commits:",
+          response.data[i].payload.commits?.length
+        );
+
+        switch (response.data[i].type) {
+          case "CommitCommentEvent":
+            console.log("Commit Comment Event");
+            break;
+          case "CreateEvent":
+            console.log("Create Event");
+            break;
+          case "DeleteEvent":
+            console.log("Delete Event");
+            break;
+          case "ForkEvent":
+            console.log("Fork Event");
+            break;
+          case "GollumEvent":
+            console.log("Gollum Event");
+            break;
+          case "IssueCommentEvent":
+            console.log("Issue Comment Event");
+            break;
+          case "IssuesEvent":
+            console.log("Issues Event");
+            break;
+          case "MemberEvent":
+            console.log("Member Event");
+            break;
+          case "PublicEvent":
+            console.log("Public Event");
+            break;
+          case "PullRequestEvent":
+            console.log("Pull Request Event");
+            break;
+          case "PullRequestReviewEvent":
+            console.log("Pull Request Review Event");
+            break;
+          case "PullRequestReviewCommentEvent":
+            console.log("Pull Request Review Comment Event");
+            break;
+          case "PullRequestReviewThreadEvent":
+            console.log("Pull Request Review Thread Event");
+            break;
+          case "PushEvent":
+            console.log("Push Event");
+            break;
+          case "ReleaseEvent":
+            console.log("Release Event");
+            break;
+          case "SponsorshipEvent":
+            console.log("Sponsorship Event");
+            break;
+          case "WatchEvent":
+            console.log("Watch Event");
+            break;
+          default:
+            console.log("Unknown Event Type");
+            break;
+        }
       }
     } else {
       console.error(response.message);
