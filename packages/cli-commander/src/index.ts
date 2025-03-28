@@ -6,6 +6,7 @@ import taskhub from "@cli-nodejs/taskhub";
 const commands = process.argv.slice(2);
 
 switch (commands[0]) {
+  case "github":
   case "github-api":
   case "gh-api":
   case "gh":
@@ -25,10 +26,11 @@ switch (commands[0]) {
       "CLI Commander - A command line interface application used to command all packages within cli-nodejs."
     );
     console.log("\nOptions:");
-    console.log("taskhub       Track and manage your tasks.");
     console.log(
       "boilerplate   Create the boilerplate files for a new package."
     );
+    console.log("taskhub       Track and manage your tasks.");
+    console.log("github-api    Interact with the GitHub API.");
     console.log("help          Show the list of command options.");
     break;
 }
