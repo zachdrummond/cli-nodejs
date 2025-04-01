@@ -20,9 +20,19 @@ export default async function github_api(commands: string[]) {
     const response = await fetch_activity(username);
 
     if (response.status === "Success" && response.data) {
-      const num_events = response.data.length;
+      const api_data = response.data;
+      const num_events: number = api_data.length;
+      const repo_event_list: RepositoryEventList = {};
+
       const date = {
-        starting: new Date(response.data[num_events - 1].created_at).toLocaleDateString(
+        starting: new Date(
+          api_data[num_events - 1].created_at
+        ).toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "numeric",
+          day: "numeric",
+        }),
+        ending: new Date(api_data[0].created_at).toLocaleDateString(
           "en-US",
           {
             year: "numeric",
@@ -30,20 +40,15 @@ export default async function github_api(commands: string[]) {
             day: "numeric",
           }
         ),
-        ending: new Date(
-          response.data[0].created_at
-        ).toLocaleDateString("en-US", {
-          year: "numeric",
-          month: "numeric",
-          day: "numeric",
-        }),
       };
       console.log(
         `Showing ${num_events} public events from the user, ${username}, between ${date.starting} and ${date.ending}`
       );
 
       for (let i = 0; i < num_events; i++) {
-        switch (response.data[i].type) {
+        const repo_name = api_data[i].repo.name;
+
+        switch (api_data[i].type) {
           case "CommitCommentEvent":
             console.log("Commit Comment Event");
             break;
@@ -84,7 +89,7 @@ export default async function github_api(commands: string[]) {
             console.log("Pull Request Review Thread Event");
             break;
           case "PushEvent":
-            console.log("Push Event");
+              repo_event_list[`${repo_name}`] = (repo_event_list[`${repo_name}`] ?? 0) + (api_data[i].payload?.size ?? 0);
             break;
           case "ReleaseEvent":
             console.log("Release Event");
@@ -96,10 +101,11 @@ export default async function github_api(commands: string[]) {
             console.log("Watch Event");
             break;
           default:
-            console.log("Unknown Event Type");
+            console.log("Event Type Unknown");
             break;
         }
       }
+      console.log("Repository Event List", repo_event_list);
     } else {
       console.error(response.message);
     }
