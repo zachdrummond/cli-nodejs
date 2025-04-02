@@ -32,14 +32,11 @@ export default async function github_api(commands: string[]) {
           month: "numeric",
           day: "numeric",
         }),
-        ending: new Date(api_data[0].created_at).toLocaleDateString(
-          "en-US",
-          {
-            year: "numeric",
-            month: "numeric",
-            day: "numeric",
-          }
-        ),
+        ending: new Date(api_data[0].created_at).toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "numeric",
+          day: "numeric",
+        }),
       };
       console.log(
         `Showing ${num_events} public events from the user, ${username}, between ${date.starting} and ${date.ending}`
@@ -48,64 +45,26 @@ export default async function github_api(commands: string[]) {
       for (let i = 0; i < num_events; i++) {
         const repo_name = api_data[i].repo.name;
 
-        switch (api_data[i].type) {
-          case "CommitCommentEvent":
-            console.log("Commit Comment Event");
-            break;
-          case "CreateEvent":
-            console.log("Create Event");
-            break;
-          case "DeleteEvent":
-            console.log("Delete Event");
-            break;
-          case "ForkEvent":
-            console.log("Fork Event");
-            break;
-          case "GollumEvent":
-            console.log("Gollum Event");
-            break;
-          case "IssueCommentEvent":
-            console.log("Issue Comment Event");
-            break;
-          case "IssuesEvent":
-            console.log("Issues Event");
-            break;
-          case "MemberEvent":
-            console.log("Member Event");
-            break;
-          case "PublicEvent":
-            console.log("Public Event");
-            break;
-          case "PullRequestEvent":
-            console.log("Pull Request Event");
-            break;
-          case "PullRequestReviewEvent":
-            console.log("Pull Request Review Event");
-            break;
-          case "PullRequestReviewCommentEvent":
-            console.log("Pull Request Review Comment Event");
-            break;
-          case "PullRequestReviewThreadEvent":
-            console.log("Pull Request Review Thread Event");
-            break;
-          case "PushEvent":
-              repo_event_list[`${repo_name}`] = (repo_event_list[`${repo_name}`] ?? 0) + (api_data[i].payload?.size ?? 0);
-            break;
-          case "ReleaseEvent":
-            console.log("Release Event");
-            break;
-          case "SponsorshipEvent":
-            console.log("Sponsorship Event");
-            break;
-          case "WatchEvent":
-            console.log("Watch Event");
-            break;
-          default:
-            console.log("Event Type Unknown");
-            break;
-        }
+        repo_event_list[`${repo_name}`] = {
+          event_type: api_data[i].type,
+          commits: 0,
+        };
+
+        if (api_data[i].type === "PushEvent")
+          repo_event_list[`${repo_name}`].commits +=
+            api_data[i].payload?.size ?? 0;
       }
-      console.log("Repository Event List", repo_event_list);
+      for (const repo in repo_event_list) {
+        if (repo_event_list[repo].event_type === "PushEvent")
+          console.log(
+            "- Pushed",
+            repo_event_list[repo].commits,
+            "commits to",
+            repo
+          );
+        if (repo_event_list[repo].event_type === "IssuesEvent")
+          console.log("- Opened an issue in", repo);
+      }
     } else {
       console.error(response.message);
     }
