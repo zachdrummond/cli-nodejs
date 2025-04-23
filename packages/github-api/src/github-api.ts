@@ -63,7 +63,7 @@ export default async function github_api(commands: string[]) {
             repo
           );
         if (repo_event_list[repo].event_type === "IssuesEvent")
-          console.log("- Opened an issue in", repo);
+          console.log("- Opened a new issue in", repo);
       }
     } else {
       console.error(response.message);

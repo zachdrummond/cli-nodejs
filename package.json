@@ -10,7 +10,8 @@
         "packages/*"
     ],
     "scripts": {
-        "build": "tsc --build --verbose tsconfig.build.json",
+        "build": "tsc --build --verbose tsconfig.json",
+        "clean": "tsc --build --clean tsconfig.json",
         "start": "node packages/cli-commander/dist/index.js",
         "dev": "node --watch -r ts-node/register src/index.ts"
     },
