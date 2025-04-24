@@ -1,5 +1,9 @@
 export default async function github_api(commands: string[]) {
   const username = commands[1];
+  if (!username) {
+    console.error("Please provide a GitHub username.");
+    return;
+  }
   const api_url = "https://api.github.com";
 
   const fetch_activity = async (
